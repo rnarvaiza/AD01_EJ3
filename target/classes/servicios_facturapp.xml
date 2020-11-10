@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><ServiciosFacturas>
+    <Servicio>
+        <Orden>4</Orden>
+        <Codigo>LMS</Codigo>
+        <Nombre>Limpieza en seco</Nombre>
+        <Profesional>Juan Martinez</Profesional>
+        <Precio>100</Precio>
+    </Servicio>
+    <Servicio>
+        <Orden>3</Orden>
+        <Codigo>PLA</Codigo>
+        <Nombre>Planchado</Nombre>
+        <Profesional>Angel López</Profesional>
+        <Precio>30</Precio>
+    </Servicio>
+    <Servicio>
+        <Orden>1</Orden>
+        <Codigo>LIM</Codigo>
+        <Nombre>Limpieza normal</Nombre>
+        <Profesional>Ana Fernández</Profesional>
+        <Precio>60</Precio>
+    </Servicio>
+    <Servicio>
+        <Orden>2</Orden>
+        <Codigo>MAN</Codigo>
+        <Nombre>Manchas</Nombre>
+        <Profesional>María Cifuentes</Profesional>
+        <Precio>35</Precio>
+    </Servicio>
+</ServiciosFacturas>
