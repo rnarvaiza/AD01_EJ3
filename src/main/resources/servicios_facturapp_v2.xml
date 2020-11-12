@@ -29,24 +29,24 @@
         <Precio>35</Precio>
     </Servicio>
     <Servicio>
-        <Orden>1</Orden>
-        <Codigo>1</Codigo>
-        <Nombre>aa</Nombre>
-        <Profesional>ss</Profesional>
-        <Precio>2</Precio>
+        <Orden>5</Orden>
+        <Codigo>ALM</Codigo>
+        <Nombre>almidonado</Nombre>
+        <Profesional>roberto</Profesional>
+        <Precio>40</Precio>
     </Servicio>
     <Servicio>
-        <Orden>1</Orden>
-        <Codigo>1</Codigo>
-        <Nombre>aa</Nombre>
-        <Profesional>ss</Profesional>
-        <Precio>2</Precio>
+        <Orden>6</Orden>
+        <Codigo>SEC</Codigo>
+        <Nombre>secado</Nombre>
+        <Profesional>genaro</Profesional>
+        <Precio>30</Precio>
     </Servicio>
     <Servicio>
-        <Orden>1</Orden>
-        <Codigo>1</Codigo>
-        <Nombre>aa</Nombre>
-        <Profesional>ss</Profesional>
-        <Precio>2</Precio>
+        <Orden>7</Orden>
+        <Codigo>PER</Codigo>
+        <Nombre>perfumado</Nombre>
+        <Profesional>alberto</Profesional>
+        <Precio>10</Precio>
     </Servicio>
 </Servicios>

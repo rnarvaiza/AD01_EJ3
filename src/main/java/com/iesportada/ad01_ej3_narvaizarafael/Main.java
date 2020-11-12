@@ -1,29 +1,45 @@
 package com.iesportada.ad01_ej3_narvaizarafael;
 
-import org.xml.sax.SAXException;
-
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.*;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
-import java.util.Iterator;
 import java.util.Scanner;
+
+/**
+ *
+ * @author rnarvaiza
+ */
 
 public class Main {
 
+    /**
+     * Main class is designed to handle a shell menu, choose actions and get throw command line
+     * all the info about.
+     * @param args
+     */
     public static void main (String[]args){
 
-        //  final String filePathXSD = "C:\\Users\\s0ck3\\Documents\\NetBeansProjects\\AD01_EJ3_NarvaizaRafael\\src\\main\\resources\\servicios_facturapp.xsd";
+        /**
+         * Constants declarations.
+         */
+
         final String filePathXMLOutput = "C:\\Users\\s0ck3\\Documents\\NetBeansProjects\\AD01_EJ3_NarvaizaRafael\\src\\main\\resources\\servicios_facturapp_v2.xml";
         final String filePathXML = "C:\\Users\\s0ck3\\Documents\\NetBeansProjects\\AD01_EJ3_NarvaizaRafael\\src\\main\\resources\\servicios_facturapp.xml";
+        final int CANTIDAD_REGISTROS_ANADIDOS = 3;
 
-
-
+        /**
+         * Methods instance.
+         */
         Scanner scannerForInts = new Scanner(System.in);
         Scanner scannerForStrings = new Scanner(System.in);
         Scanner scannerForMenu = new Scanner(System.in);
         Utils utils = new Utils();
         XMLValidator xml = new XMLValidator();
+        ArrayList<Utils.Servicio> modifiedCollection;
+
+        /**
+         * Variable declaration and initialisation.
+         */
 
         int orden;
         int precio;
@@ -36,9 +52,12 @@ public class Main {
         String xmlFileNew = "servicios_facturapp_v2.xml";
         boolean continuation = true;
 
-        ArrayList<Utils.Servicio> modifiedCollection = new ArrayList<>();
 
-
+        /**
+         * Menu item initialization.
+         * Here you'll choose between adding nodes to the xml file (you'll type it throw shell), read the xml file or validate the xml file
+         * against its xsd.
+         */
 
         System.out.println("En este programa podrás trabajar con ficheros XML. Puedes leerlos, añadir nuevos servicios o validarlos");
         do {
@@ -60,34 +79,30 @@ public class Main {
                     case 1:
                         utils.setFilePathXML(filePathXML);
                         modifiedCollection = utils.xmlSavedOnArrayList();
-                        while(temp < 3 ){
+                        while(temp < CANTIDAD_REGISTROS_ANADIDOS ){
                             Utils.Servicio servicio = new Utils.Servicio();
                             System.out.println("\n----------------------------");
                             System.out.println("\n Menú de adición de nodos. Aquí podrá añadir 3 nodos. Aparecerán en el fichero servicios_facturapp_v2");
                             System.out.println("\n A continuación, añada un nuevo servicio:");
+
                             System.out.println("Número de orden");
-                            //orden = scannerForInts.nextInt();
-                            orden = 1;
+                            orden = scannerForInts.nextInt();
                             servicio.setOrden(orden);
 
                             System.out.println("Código: ");
-                            //codigo = scannerForStrings.next();
-                            codigo ="1";
+                            codigo = scannerForStrings.next();
                             servicio.setCodigo(codigo);
 
                             System.out.println("Nombre: ");
-                            nombre = "aa";
-                            //nombre = scannerForStrings.next();
+                            nombre = scannerForStrings.next();
                             servicio.setNombre(nombre);
 
                             System.out.println("Autor: ");
-                            autor = "ss";
-                            //autor = scannerForStrings.next();
+                            autor = scannerForStrings.next();
                             servicio.setAutor(autor);
 
                             System.out.println("Precio: ");
-                            //precio = scannerForInts.nextInt();
-                            precio = 2;
+                            precio = scannerForInts.nextInt();
                             servicio.setPrecio(precio);
 
 

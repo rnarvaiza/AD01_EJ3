@@ -20,18 +20,18 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Rafa Narvaiza
+ * @author rnarvaiza
  */
 public class Utils {
 
     private String filePathXML="";
 
-
-
-    private static int CANTIDAD_REGISTROS_AÑADIDOS = 3;
-
     private ArrayList<Servicio> modifiedCollection = new ArrayList<>();
 
+
+    /**
+     * This method will implement DocumentBuilderFactory and DocumentBuilder in order to read an XML.
+     */
 
 
     public void readXML() {
@@ -73,6 +73,11 @@ public class Utils {
             System.out.println(e.getMessage());
         }
     }
+
+    /**
+     * This method will read the XML and store it on an ArrayList.
+     * @return
+     */
 
 
     public ArrayList<Servicio>xmlSavedOnArrayList() {
@@ -122,53 +127,57 @@ public class Utils {
     }
 
 
+    /**
+     * This method will print the arrayList on XML.
+     * @throws ParserConfigurationException
+     */
 
 
     public void printNewCollection() throws ParserConfigurationException {
         try{
             File file = new File(getFilePathXML());
-            DocumentBuilderFactory creador = DocumentBuilderFactory.newInstance();
-            DocumentBuilder constructor = creador.newDocumentBuilder();
-            DOMImplementation implementacion = constructor.getDOMImplementation();
-            Document documento = constructor.newDocument();
-            Element elementoRaiz = documento.createElement("Servicios");
-            documento.appendChild(elementoRaiz);
+            DocumentBuilderFactory dbfactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dbuilder = dbfactory.newDocumentBuilder();
+            DOMImplementation domImplementation = dbuilder.getDOMImplementation();
+            Document doc = dbuilder.newDocument();
+            Element rootElement = doc.createElement("Servicios");
+            doc.appendChild(rootElement);
 
             for (int i = 0; i < getModifiedCollection().size(); i++){
-                Element elementoServicio = documento.createElement("Servicio");
-                elementoRaiz.appendChild(elementoServicio);
+                Element servicioElement = doc.createElement("Servicio");
+                rootElement.appendChild(servicioElement);
 
-                Element elementoOrden = documento.createElement("Orden");
-                elementoServicio.appendChild(elementoOrden);
-                Text valorOrden = documento.createTextNode(String.valueOf(getModifiedCollection().get(i).getOrden()));
-                elementoOrden.appendChild(valorOrden);
+                Element ordenElement = doc.createElement("Orden");
+                servicioElement.appendChild(ordenElement);
+                Text ordenValue = doc.createTextNode(String.valueOf(getModifiedCollection().get(i).getOrden()));
+                ordenElement.appendChild(ordenValue);
 
-                Element elementoCodigo = documento.createElement("Codigo");
-                elementoServicio.appendChild(elementoCodigo);
-                Text valorCodigo = documento.createTextNode(getModifiedCollection().get(i).getCodigo());
-                elementoCodigo.appendChild(valorCodigo);
+                Element codigoElement = doc.createElement("Codigo");
+                servicioElement.appendChild(codigoElement);
+                Text valorElement = doc.createTextNode(getModifiedCollection().get(i).getCodigo());
+                codigoElement.appendChild(valorElement);
 
-                Element elementoNombre = documento.createElement("Nombre");
-                elementoServicio.appendChild(elementoNombre);
-                Text valorNombre = documento.createTextNode(getModifiedCollection().get(i).getNombre());
-                elementoNombre.appendChild(valorNombre);
+                Element nombreElement = doc.createElement("Nombre");
+                servicioElement.appendChild(nombreElement);
+                Text nombreValue = doc.createTextNode(getModifiedCollection().get(i).getNombre());
+                nombreElement.appendChild(nombreValue);
 
-                Element elementoProfesional = documento.createElement("Profesional");
-                elementoServicio.appendChild(elementoProfesional);
-                Text valorProfesional = documento.createTextNode(getModifiedCollection().get(i).getAutor());
-                elementoProfesional.appendChild(valorProfesional);
+                Element profesionalElement = doc.createElement("Profesional");
+                servicioElement.appendChild(profesionalElement);
+                Text profesionalValue = doc.createTextNode(getModifiedCollection().get(i).getAutor());
+                profesionalElement.appendChild(profesionalValue);
 
-                Element elementoPrecio = documento.createElement("Precio");
-                elementoServicio.appendChild(elementoPrecio);
-                Text valorPrecio = documento.createTextNode(String.valueOf(getModifiedCollection().get(i).getPrecio()));
-                elementoPrecio.appendChild(valorPrecio);
+                Element precioElement = doc.createElement("Precio");
+                servicioElement.appendChild(precioElement);
+                Text precioValue = doc.createTextNode(String.valueOf(getModifiedCollection().get(i).getPrecio()));
+                precioElement.appendChild(precioValue);
 
             }
-            Source source = new DOMSource(documento);
-            Result resultado = new StreamResult(file);
+            Source source = new DOMSource(doc);
+            Result result = new StreamResult(file);
             Transformer transformer = TransformerFactory.newInstance().newTransformer();
             transformer.setOutputProperty(OutputKeys.INDENT,"yes");
-            transformer.transform(source, resultado);
+            transformer.transform(source, result);
 
         } catch (TransformerConfigurationException e) {
             System.out.println(e.getMessage());
@@ -194,6 +203,9 @@ public class Utils {
         this.filePathXML = filePathXML;
     }
 
+    /**
+     * Servicio class will identify all the specs of one servicio. Defining the order number, price, code, name and worker name.
+     */
 
     public static class Servicio {
 
